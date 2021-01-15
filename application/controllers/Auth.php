@@ -33,6 +33,8 @@ class Auth extends CI_Controller {
                     'email' => $user['email'],
                     'username' => $user['username'],
                     'nama' => $user['nama'],
+                    'jabatan_id' => $user['jabatan_id'],
+                    'department_id' => $user['department_id'],
                 ];
                 $this->session->set_userdata($data);
                 redirect('department');
@@ -55,7 +57,7 @@ class Auth extends CI_Controller {
             $this->session->unset_userdata('username');
             $this->session->unset_userdata('nama');
         
-            redirect('home');
+            redirect('auth');
         }
 
         public function signup()

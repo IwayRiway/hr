@@ -16,6 +16,8 @@
 
        <li class="<?=$side=='karyawan'?'active':''?>"><a class="nav-link" href="<?=base_url('karyawan')?>"><i class="fas fa-keyboard"></i><span>Data Karyawan</span></a></li> 
 
+       <li class="<?=$side=='cuti'?'active':''?>"><a class="nav-link" href="<?=base_url('cuti')?>"><i class="fas fa-keyboard"></i><span>Data Cuti</span></a></li> 
+
        <li class="<?=$side=='user'?'active':''?>"><a class="nav-link" href="<?=base_url('user')?>"><i class="fas fa-users-cog"></i><span>Manajemen User</span></a></li> 
 
       

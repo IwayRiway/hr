@@ -9,7 +9,7 @@ class Department_model extends CI_model
 
     public function getDepartment()
     {
-        return $this->db->get('department')->result_array();
+        return $this->db->get_where('department', ['id!='=>9])->result_array();
     }
 
     public function save()

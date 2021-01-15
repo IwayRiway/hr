@@ -34,8 +34,10 @@
                                     <td><?=$i++?></td>
                                     <td><?=$db['nama']?></td>
                                     <td>
+                                    <?php if($db['id']!=3):?>
                                         <a href="<?=base_url('jabatan/edit/')?><?=$db['id']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                         <a href="<?=base_url('jabatan/delete/')?><?=$db['id']?>" class="btn btn-icon btn-sm btn-danger mr-2 tombol-hapus" title="Delete"><i class="fas fa-trash"></i></a>
+                                    <?php endif?>
                                     </td>
                                 </tr>
                             <?php endforeach?>

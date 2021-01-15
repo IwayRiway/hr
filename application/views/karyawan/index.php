@@ -38,8 +38,10 @@
                                     <td><?=$db['department']?></td>
                                     <td><?=$db['jabatan']?></td>
                                     <td>
+                                    <?php if($db['id_pk']!=6):?>
                                         <a href="<?=base_url('karyawan/edit/')?><?=$db['id_pk']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                                         <a href="<?=base_url('karyawan/delete/')?><?=$db['id_pk']?>" class="btn btn-icon btn-sm btn-danger mr-2 tombol-hapus" title="Delete"><i class="fas fa-trash"></i></a>
+                                    <?php endif?>
                                     </td>
                                 </tr>
                             <?php endforeach?>

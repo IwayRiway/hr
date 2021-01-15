@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <form method="POST" action="<?=base_url('karyawan/update')?>" enctype="multipart/form-data">
-                            <input id="id" type="hidden" class="form-control" name="id" autofocus required value="<?=$karyawan['id']?>">
+                            <input id="id" type="hidden" class="form-control" name="id" autofocus required value="<?=$karyawan['id_pk']?>">
 
                             <div class="row">
                               <div class="col-sm-6">
