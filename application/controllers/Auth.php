@@ -37,7 +37,7 @@ class Auth extends CI_Controller {
                     'department_id' => $user['department_id'],
                 ];
                 $this->session->set_userdata($data);
-                redirect('department');
+                redirect('dashboard');
             } else {
                 $this->session->set_flashdata('gagal', 'Password Anda Salah');
                 redirect('auth');

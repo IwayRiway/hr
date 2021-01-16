@@ -10,6 +10,8 @@
      <ul class="sidebar-menu">
        <li class="menu-header">Navigation</li>
 
+       <li class="<?=$side=='dashboard'?'active':''?>"><a class="nav-link" href="<?=base_url('dashboard')?>"><i class="fas fa-user-tie"></i><span>Dashboard</span></a></li> 
+
        <li class="<?=$side=='department'?'active':''?>"><a class="nav-link" href="<?=base_url('department')?>"><i class="fas fa-user-tie"></i><span>Data Department</span></a></li> 
 
        <li class="<?=$side=='jabatan'?'active':''?>"><a class="nav-link" href="<?=base_url('jabatan')?>"><i class="fab fa-product-hunt"></i><span>Data Jabatan</span></a></li> 
@@ -18,7 +20,11 @@
 
        <li class="<?=$side=='cuti'?'active':''?>"><a class="nav-link" href="<?=base_url('cuti')?>"><i class="fas fa-keyboard"></i><span>Data Cuti</span></a></li> 
 
-       <li class="<?=$side=='user'?'active':''?>"><a class="nav-link" href="<?=base_url('user')?>"><i class="fas fa-users-cog"></i><span>Manajemen User</span></a></li> 
+       <li class="<?=$side=='lembur'?'active':''?>"><a class="nav-link" href="<?=base_url('lembur')?>"><i class="fas fa-keyboard"></i><span>Data Lembur</span></a></li> 
+
+       <li class="<?=$side=='pengajuan'?'active':''?>"><a class="nav-link" href="<?=base_url('pengajuan')?>"><i class="fas fa-keyboard"></i><span>Pengajuan Karyawan</span></a></li> 
+
+       <!-- <li class="<?=$side=='user'?'active':''?>"><a class="nav-link" href="<?=base_url('user')?>"><i class="fas fa-users-cog"></i><span>Manajemen User</span></a></li>  -->
 
       
    </aside>

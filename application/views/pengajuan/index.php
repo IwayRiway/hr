@@ -4,7 +4,7 @@
     <div class="section-header">
     <h1><?=$judul?></h1>
         <div class="section-header-button">
-            <a href="<?=base_url('cuti/create')?>" class="btn btn-primary">Add New</a>
+            <a href="<?=base_url('pengajuan/create')?>" class="btn btn-primary">Add New</a>
         </div>
 
         <div class="section-header-breadcrumb">
@@ -14,17 +14,17 @@
 
     <div class="section-body">
 
-    <?php if($this->session->userdata('jabatan_id')==3):?>
+    <?php if($this->session->userdata('department_id')==10):?>
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <a href="<?=base_url('cuti/history')?>">
+            <a href="<?=base_url('pengajuan/history')?>">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-primary">
                         <i class="far fa-user"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                        <h4>Total Pengajuan Cuti</h4>
+                        <h4>Total Pengajuan Karyawan</h4>
                         </div>
                         <div class="card-body">
                         <?=$total?>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <a href="<?=base_url('cuti/pengajuan')?>">
+            <a href="<?=base_url('pengajuan/pengajuan')?>">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-warning">
                         <i class="far fa-user"></i>
@@ -96,22 +96,18 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nama Posisi</th>
                                 <th>Tanggal Pengajuan</th>
-                                <th>Dari</th>
-                                <th>Sampai</th>
-                                <th>Jumlah</th>
                                 <th>Keterangan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach($cuti as $db):?>
+                            <?php $i=1; foreach($pengajuan_k as $db):?>
                                 <tr>
                                     <td><?=$i++?></td>
+                                    <td><?=$db['posisi']?></td>
                                     <td><?=$db['tgl_pengajuan']?></td>
-                                    <td><?=$db['dari']?></td>
-                                    <td><?=$db['sampai']?></td>
-                                    <td><?=$db['jumlah']?></td>
                                     <td><?=$db['keterangan']?></td>
                                     <td>
                                         <?php if($db['status']==NULL):?> <span class="badge badge-warning">Pending</span> 

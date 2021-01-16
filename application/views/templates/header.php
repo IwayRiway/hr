@@ -12,6 +12,7 @@
    <!-- CSS Libraries -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+   <link rel="stylesheet" href="<?=base_url('assets/modules/summernote/summernote-bs4.css')?>">
    <!-- <link rel="stylesheet" href="<?=base_url('assets/modules/bootstrap-daterangepicker/daterangepicker.css')?>"> -->
    <link rel="stylesheet" href="<?=base_url('assets/datepicker/css/datepicker.css')?>">
 

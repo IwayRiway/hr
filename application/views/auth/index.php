@@ -104,6 +104,18 @@
   <script src="<?=base_url('assets/js/custom.js')?>"></script>
 
   <script>
+  const sukses = $('.sukses').data('flashdata');
+    if (sukses) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Berhasil',
+        text: sukses,
+        showConfirmButton: false,
+        timer: 2500
+      })
+    }
+    
     const gagal = $('.gagal').data('flashdata');
     if (gagal) {
       Swal.fire({

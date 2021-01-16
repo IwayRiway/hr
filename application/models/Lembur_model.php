@@ -1,6 +1,6 @@
 <?php
 
-class Cuti_model extends CI_model
+class Lembur_model extends CI_model
 {
 
     private function _atasan(){
@@ -19,21 +19,19 @@ class Cuti_model extends CI_model
 
     public function getData()
     {
-        return $this->db->get_where('cuti', ['karyawan_id' => $this->session->userdata('id')])->result_array();
+        return $this->db->get_where('lembur', ['karyawan_id' => $this->session->userdata('id')])->result_array();
     }
 
     public function save()
     {
         $data = [
             'tgl_pengajuan' => date('Y-m-d'),
-            'dari' => $this->input->post('dari'),
-            'sampai' => $this->input->post('sampai'),
-            'jumlah' => $this->input->post('jumlah'),
+            'tgl_lembur' => $this->input->post('dari'),
             'keterangan' => $this->input->post('keterangan'),
             'karyawan_id' => $this->session->userdata('id'),
             'atasan_id' => $this->_atasan(),
         ];
-        $this->db->insert('cuti', $data);
+        $this->db->insert('lembur', $data);
     }
 
     public function getDataPengajuanTotal()
@@ -44,7 +42,7 @@ class Cuti_model extends CI_model
                                     a.*, 
                                     b.nama 
                                 FROM 
-                                    cuti a 
+                                    lembur a 
                                     JOIN karyawan b ON a.karyawan_id = b.id 
                                 WHERE 
                                     b.department_id = '$department_id' 
@@ -60,7 +58,7 @@ class Cuti_model extends CI_model
                                     a.*, 
                                     b.nama 
                                 FROM 
-                                    cuti a 
+                                    lembur a 
                                     JOIN karyawan b ON a.karyawan_id = b.id 
                                 WHERE 
                                     a.status IS NULL 
@@ -77,7 +75,7 @@ class Cuti_model extends CI_model
                                     a.*, 
                                     b.nama 
                                 FROM 
-                                    cuti a 
+                                    lembur a 
                                     JOIN karyawan b ON a.karyawan_id = b.id 
                                 WHERE 
                                     a.status = 1 
@@ -94,7 +92,7 @@ class Cuti_model extends CI_model
                                     a.*, 
                                     b.nama 
                                 FROM 
-                                    cuti a 
+                                    lembur a 
                                     JOIN karyawan b ON a.karyawan_id = b.id 
                                 WHERE 
                                     a.status = 0 
@@ -109,6 +107,6 @@ class Cuti_model extends CI_model
             'status' => $status
         ];
 
-        $this->db->update('cuti', $data, ['id'=>$id]);
+        $this->db->update('lembur', $data, ['id'=>$id]);
     }
 }

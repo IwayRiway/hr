@@ -3,9 +3,6 @@
 <section class="section">
     <div class="section-header">
     <h1><?=$judul?></h1>
-        <div class="section-header-button">
-            <a href="<?=base_url('department/create')?>" class="btn btn-primary">Add New</a>
-        </div>
 
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#"><?=$judul?></a></div>
@@ -13,6 +10,7 @@
     </div>
 
     <div class="section-body">
+
         
         <div class="row">
             <div class="col-sm-12">
@@ -25,18 +23,28 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Aksi</th>
+                                <th>Tanggal Pengajuan</th>
+                                <th>Posisi</th>
+                                <th>Department</th>
+                                <th>Keterangan</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach($department as $db):?>
+                            <?php $i=1; foreach($pengajuan as $db):?>
                                 <tr>
                                     <td><?=$i++?></td>
                                     <td><?=$db['nama']?></td>
+                                    <td><?=$db['tgl_pengajuan']?></td>
+                                    <td><?=$db['posisi']?></td>
+                                    <td><?=$db['department']?></td>
+                                    <td><?=$db['keterangan']?></td>
                                     <td>
-                                            <a href="<?=base_url('department/edit/')?><?=$db['id']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                                        <?php if($db['id'] != 10):?>
-                                            <a href="<?=base_url('department/delete/')?><?=$db['id']?>" class="btn btn-icon btn-sm btn-danger mr-2 tombol-hapus" title="Delete"><i class="fas fa-trash"></i></a>
+                                        <?php if($db['status']==NULL):?> <span class="badge badge-warning">Pending</span> 
+                                        <?php elseif($db['status']==1):?>
+                                        <span class="badge badge-success">Accept</span> 
+                                        <?php elseif($db['status']==0):?>
+                                        <span class="badge badge-danger">Decline</span> 
                                         <?php endif?>
                                     </td>
                                 </tr>

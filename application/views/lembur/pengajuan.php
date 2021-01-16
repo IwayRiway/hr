@@ -23,9 +23,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tanggal Pengajuan</th>
-                                <th>Dari</th>
-                                <th>Sampai</th>
-                                <th>Jumlah Hari</th>
+                                <th>Tanggal Lembur</th>
                                 <th>Keterangan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -36,13 +34,11 @@
                                     <td><?=$i++?></td>
                                     <td><?=$db['nama']?></td>
                                     <td><?=$db['tgl_pengajuan']?></td>
-                                    <td><?=$db['dari']?></td>
-                                    <td><?=$db['sampai']?></td>
-                                    <td><?=$db['jumlah']?></td>
+                                    <td><?=$db['tgl_lembur']?></td>
                                     <td><?=$db['keterangan']?></td>
                                     <td>
-                                        <a href="<?=base_url('cuti/acc/')?><?=$db['id']?>/1" class="btn btn-icon btn-sm btn-success mr-2 acc" title="Accept"><i class="fas fa-check"></i></a>
-                                        <a href="<?=base_url('cuti/acc/')?><?=$db['id']?>/0" class="btn btn-icon btn-sm btn-danger mr-2 dc" title="Decline"><i class="fas fa-times"></i></a>
+                                        <a href="<?=base_url('lembur/acc/')?><?=$db['id']?>/1" class="btn btn-icon btn-sm btn-success mr-2 acc" title="Accept"><i class="fas fa-check"></i></a>
+                                        <a href="<?=base_url('lembur/acc/')?><?=$db['id']?>/0" class="btn btn-icon btn-sm btn-danger mr-2 dc" title="Decline"><i class="fas fa-times"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach?>
@@ -70,7 +66,7 @@
             const href = $(this).attr('href');
             Swal.fire({
                 title: 'Yakin?',
-                text: "Terima Pengajuan Cuti Ini..?",
+                text: "Terima Pengajuan lembur Ini..?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -89,7 +85,7 @@
             const href = $(this).attr('href');
             Swal.fire({
                 title: 'Yakin?',
-                text: "Tolak Pengajuan Cuti Ini..?",
+                text: "Tolak Pengajuan lembur Ini..?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

@@ -1,31 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cuti extends CI_Controller {
+class Lembur extends CI_Controller {
 
      public function __construct()
     {
         parent::__construct();
       //   is_login();
-        $this->load->model('Cuti_model');
+        $this->load->model('Lembur_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data['judul'] = "Data Cuti";
-        $data['cuti'] = $this->Cuti_model->getData();
+        $data['judul'] = "Data Lembur";
+        $data['lembur'] = $this->Lembur_model->getData();
 
         if($this->session->userdata('jabatan_id')==3){
-            $data['total'] = count($this->Cuti_model->getDataPengajuanTotal());
-            $data['pengajuan'] = count($this->Cuti_model->getDataPengajuan());
-            $data['acc'] = count($this->Cuti_model->getDataPengajuanAcc());
-            $data['dc'] = count($this->Cuti_model->getDataPengajuanDc());
+            $data['total'] = count($this->Lembur_model->getDataPengajuanTotal());
+            $data['pengajuan'] = count($this->Lembur_model->getDataPengajuan());
+            $data['acc'] = count($this->Lembur_model->getDataPengajuanAcc());
+            $data['dc'] = count($this->Lembur_model->getDataPengajuanDc());
         }
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('cuti/index', $data);
+        $this->load->view('lembur/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -33,47 +33,47 @@ class Cuti extends CI_Controller {
     {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('cuti/create');
+        $this->load->view('lembur/create');
         $this->load->view('templates/footer');
     }
 
     public function save()
     {   
-        $data = $this->Cuti_model->save();
+        $data = $this->Lembur_model->save();
         $this->session->set_flashdata('sukses', 'Data Berhasil Simpan');
-        redirect('cuti');
+        redirect('lembur');
     }
 
     public function pengajuan()
     {
-        $data['judul'] = "Pengajuan Cuti (Pending)";
-        $data['pengajuan'] = $this->Cuti_model->getDataPengajuan();
+        $data['judul'] = "Pengajuan Lembur (Pending)";
+        $data['pengajuan'] = $this->Lembur_model->getDataPengajuan();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('cuti/pengajuan', $data);
+        $this->load->view('lembur/pengajuan', $data);
         $this->load->view('templates/footer');
     }
 
     public function acc($id,$status)
     {
-        $this->Cuti_model->acc($id,$status);
+        $this->Lembur_model->acc($id,$status);
         if($status == 1){
-            $this->session->set_flashdata('info', 'Cuti Diterima');
+            $this->session->set_flashdata('info', 'Lembur Diterima');
         } else {
-            $this->session->set_flashdata('info', 'Cuti Ditolak');
+            $this->session->set_flashdata('info', 'Lembur Ditolak');
         }
-        redirect('cuti/pengajuan');
+        redirect('lembur/pengajuan');
     }
 
     public function history()
     {
-        $data['judul'] = "Pengajuan Cuti";
-        $data['pengajuan'] = $this->Cuti_model->getDataPengajuanTotal();
+        $data['judul'] = "Pengajuan Lembur";
+        $data['pengajuan'] = $this->Lembur_model->getDataPengajuanTotal();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('cuti/history', $data);
+        $this->load->view('lembur/history', $data);
         $this->load->view('templates/footer');
     }
 

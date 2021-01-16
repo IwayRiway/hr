@@ -34,6 +34,7 @@
   <script src="<?=base_url('assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js')?>"></script>
   <script src="<?=base_url('assets/modules/select2/dist/js/select2.full.min.js')?>"></script>
   <script src="<?=base_url('assets/modules/jquery-selectric/jquery.selectric.min.js')?>"></script>
+  <script src="<?=base_url('assets/modules/summernote/summernote-bs4.js')?>"></script>
 
   <!-- Page Specific JS File -->
   <script src="<?=base_url('assets/js/page/forms-advanced-forms.js')?>"></script>
