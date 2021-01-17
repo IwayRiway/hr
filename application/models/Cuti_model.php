@@ -10,9 +10,10 @@ class Cuti_model extends CI_model
             $data = $this->db->get_where('karyawan', ['jabatan_id'=>3, 'department_id'=>$this->session->userdata('department_id')])->row_array();
 
             if($data){
-                return $data['id'];
+                return $data;
             } else {
-                return 404;
+                $data['id'] = 404;
+                return $data;
             }
         }
     }
@@ -24,6 +25,8 @@ class Cuti_model extends CI_model
 
     public function save()
     {
+        $atasan = $this->_atasan();
+
         $data = [
             'tgl_pengajuan' => date('Y-m-d'),
             'dari' => $this->input->post('dari'),
@@ -31,9 +34,16 @@ class Cuti_model extends CI_model
             'jumlah' => $this->input->post('jumlah'),
             'keterangan' => $this->input->post('keterangan'),
             'karyawan_id' => $this->session->userdata('id'),
-            'atasan_id' => $this->_atasan(),
+            'atasan_id' => $atasan['id'],
         ];
         $this->db->insert('cuti', $data);
+        
+        $email = $this->db->get_where("cuti", $data)->row_array();
+        $email['tipe'] = 'Cuti';
+        $email['nama'] = $this->session->userdata('nama');
+        $email['email'] = $atasan['email'];
+        $email['yth'] = $atasan['nama'];
+        send_mail($email);
     }
 
     public function getDataPengajuanTotal()

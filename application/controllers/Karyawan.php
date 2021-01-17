@@ -6,7 +6,7 @@ class Karyawan extends CI_Controller {
      public function __construct()
     {
         parent::__construct();
-      //   is_login();
+        is_login();
         $this->load->model('Karyawan_model');
         $this->load->model('Department_model');
         $this->load->model('Jabatan_model');

@@ -56,6 +56,8 @@ class Auth extends CI_Controller {
             $this->session->unset_userdata('email');
             $this->session->unset_userdata('username');
             $this->session->unset_userdata('nama');
+            $this->session->unset_userdata('jabatan_id');
+            $this->session->unset_userdata('department_id');
         
             redirect('auth');
         }
@@ -72,38 +74,6 @@ class Auth extends CI_Controller {
             $this->Auth_model->save();
             $this->session->set_flashdata('sukses', 'Data Berhasil Simpan');
             redirect('auth');
-        }
-
-        public function mail()
-        {
-            $data = [
-                'nama' => 'sagjsagj',
-                'dari' => '20 Januari 2019',
-                'sampai' => '20 Januari 2019',
-            ];
-            
-            $config = [
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_user' => 'ggalmair@gmail.com',
-                'smtp_pass' => 'g1i2a3n4',
-                'smtp_port' => 465,
-                'mailtype' => 'html',
-                'charset' => 'utf-8',
-                'newline' => "\r\n"
-            ];
-
-            $this->email->initialize($config);
-            $this->load->library('email', $config);
-
-            $this->email->from('ggalmair@gmail.com', 'My Way Out');
-            $this->email->to('riway.restu@gmail.com');
-            $subject = 'Pengajuan Cuti';
-            $this->email->subject($subject);
-
-            $body = $this->load->view('templates/email',$data,TRUE);
-            $this->email->message($body);
-            $this->email->send();
         }
     }
 

@@ -158,8 +158,8 @@
                             </tr>
                             <tr>
                               <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:18.5px;line-height:1.5;text-align:center;color:#000000;"><strong>Konfirmasi Pengajuan <?=$tipe?></strong>
-                                  <br> Salah satu staff anda mengajukan <?=strtolower($tipe)?>. Silahkan konfirmasi pengajuan <?=strtolower($tipe)?> staff anda
+                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:18.5px;line-height:1.5;text-align:center;color:#000000;"><strong>Konfirmasi Pengajuan Karyawan Baru</strong>
+                                  <br> Salah satu manager mengajukan lowongan karyawan baru. Silahkan konfirmasi pengajuan tersebut.
                                 </div>
                               </td>
                             </tr>
@@ -192,7 +192,7 @@
                           <tbody>
                             <tr>
                               <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;line-height:1.5;text-align:left;color:#000000;"><br>Yth. <?=$yth?> <br><br> Salah satu staff didepartment anda mengajukan <?=strtolower($tipe)?> dengan detail sebagai berikut :</div>
+                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;line-height:1.5;text-align:left;color:#000000;"><br>Yth. HRD IwayRiway Team <br><br> Salah satu manager mengajukan posisi untuk karyawan baru dengan detail sebagai berikut :</div>
                               </td>
                             </tr>
                           </tbody>
@@ -212,26 +212,18 @@
                           <tbody>
                             <tr>
                               <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><br><strong>Nama <span>: <?=$nama?></span></strong></div>
+                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><br><strong>Nama Manager<span>: <?=$nama?></span></strong></div>
                               </td>
                             </tr>
                             <tr>
-                              <?php if($tipe == 'Cuti') :?>
                               <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><strong>Tanggal Cuti <span>: <?=$dari?> s.d. <?=$sampai?></span></strong></div>
+                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><strong>Nama Posisi <span>: <?=$posisi?></span></strong></div>
                               </td>
-                              <?php else :?>
-                                <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><strong>Tanggal Lembur <span>: <?=$tgl_lembur?></span></strong></div>
-                              </td>
-                              <?php endif?>
                             </tr>
                             <tr>
-                              <?php if($tipe == 'Cuti') :?>
                               <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><strong>Jumlah Hari <span>: <?=$jumlah?> hari</span></strong></div>
+                                <div style="font-family:Poppins, Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:100;line-height:1.5;text-align:left;color:#000000;"><strong>Department <span>: <?=$department?></span></strong></div>
                               </td>
-                              <?php endif?>
                             </tr>
                             <tr>
                               <td align="left" style="font-size:0px;padding:0px;padding-bottom:20px;word-break:break-word;">
@@ -258,7 +250,7 @@
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                                   <tr>
                                     <td align="center" bgcolor="#389760" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#389760;" valign="middle">
-                                      <a href="<?=base_url('konfirmasi/acc/')?><?=$id?>/1/<?=strtolower($tipe)?>" style="display:inline-block;background:#389760;color:white;font-family:Helvetica;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;"> Accept </a>
+                                      <a href="<?=base_url('konfirmasi/karyawan/')?><?=$id?>/1" style="display:inline-block;background:#389760;color:white;font-family:Helvetica;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;"> Accept </a>
                                     </td>
                                   </tr>
                                 </table>
@@ -284,7 +276,7 @@
                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                                   <tr>
                                     <td align="center" bgcolor="#f45e43" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#f45e43;" valign="middle">
-                                      <a href="<?=base_url('konfirmasi/acc/')?><?=$id?>/0/<?=strtolower($tipe)?>" style="display:inline-block;background:#f45e43;color:white;font-family:Helvetica;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;"> Decline </a>
+                                      <a href="<?=base_url('konfirmasi/karyawan/')?><?=$id?>/0" style="display:inline-block;background:#f45e43;color:white;font-family:Helvetica;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;"> Decline </a>
                                     </td>
                                   </tr>
                                 </table>

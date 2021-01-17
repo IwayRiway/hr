@@ -10,9 +10,10 @@ class Lembur_model extends CI_model
             $data = $this->db->get_where('karyawan', ['jabatan_id'=>3, 'department_id'=>$this->session->userdata('department_id')])->row_array();
 
             if($data){
-                return $data['id'];
+                return $data;
             } else {
-                return 404;
+                $data['id'] = 404;
+                return $data;
             }
         }
     }
@@ -32,6 +33,13 @@ class Lembur_model extends CI_model
             'atasan_id' => $this->_atasan(),
         ];
         $this->db->insert('lembur', $data);
+
+        $email = $this->db->get_where("lembur", $data)->row_array();
+        $email['tipe'] = 'Lembur';
+        $email['nama'] = $this->session->userdata('nama');
+        $email['email'] = $atasan['email'];
+        $email['yth'] = $atasan['nama'];
+        send_mail($email);
     }
 
     public function getDataPengajuanTotal()

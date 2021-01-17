@@ -17,6 +17,18 @@ class Pengajuan_model extends CI_model
     //     }
     // }
 
+    private function email()
+    {
+        $email = [];
+        $data = $this->db->get_where('karyawan', ['department_id'=>10])->result_array();
+
+        foreach ($data as $key => $db) {
+            array_push($email, $db['email']);
+        }
+
+        return $email;
+    }
+
     public function getData()
     {
         return $this->db->get_where('pengajuan', ['department_id' => $this->session->userdata('department_id')])->result_array();
@@ -32,6 +44,14 @@ class Pengajuan_model extends CI_model
             'karyawan_id' => $this->session->userdata('id'),
         ];
         $this->db->insert('pengajuan', $data);
+
+        $department = $this->db->get_where("department", ['id'=>$this->session->userdata('department_id')])->row_array();
+        
+        $email = $this->db->get_where("pengajuan", $data)->row_array();
+        $email['nama'] = $this->session->userdata('nama');
+        $email['department'] = $department['nama'];
+        $email['email'] = $this->email();
+        send_mailKaryawan($email);
     }
 
     public function getDataPengajuanTotal()
