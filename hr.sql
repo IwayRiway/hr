@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jan 2021 pada 03.43
+-- Waktu pembuatan: 17 Jan 2021 pada 22.53
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -20,6 +20,108 @@ SET time_zone = "+00:00";
 --
 -- Database: `hr`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `akses`
+--
+
+CREATE TABLE `akses` (
+  `id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `akses`
+--
+
+INSERT INTO `akses` (`id`, `menu_id`, `department_id`) VALUES
+(2, 2, 9),
+(3, 3, 9),
+(4, 4, 9),
+(5, 5, 9),
+(6, 6, 9),
+(7, 7, 9),
+(8, 8, 9),
+(9, 9, 9),
+(10, 10, 9),
+(11, 11, 9),
+(12, 12, 9),
+(13, 13, 9),
+(14, 14, 9),
+(15, 15, 9),
+(16, 16, 9),
+(17, 17, 9),
+(18, 18, 9),
+(19, 19, 9),
+(20, 20, 9),
+(21, 21, 9),
+(22, 22, 9),
+(23, 23, 9),
+(24, 24, 9),
+(25, 25, 9),
+(26, 26, 9),
+(27, 27, 9),
+(28, 28, 9),
+(29, 29, 9),
+(30, 30, 9),
+(31, 31, 9),
+(32, 32, 9),
+(33, 33, 9),
+(34, 34, 9),
+(35, 35, 9),
+(36, 36, 9),
+(37, 1, 9),
+(38, 1, 10),
+(39, 2, 10),
+(40, 3, 10),
+(41, 4, 10),
+(42, 5, 10),
+(43, 6, 10),
+(44, 7, 10),
+(45, 8, 10),
+(46, 9, 10),
+(47, 10, 10),
+(48, 11, 10),
+(49, 12, 10),
+(50, 13, 10),
+(51, 14, 10),
+(52, 15, 10),
+(53, 16, 10),
+(54, 17, 10),
+(55, 18, 10),
+(56, 19, 10),
+(57, 20, 10),
+(58, 21, 10),
+(59, 22, 10),
+(60, 23, 10),
+(61, 24, 10),
+(62, 25, 10),
+(63, 26, 10),
+(64, 27, 10),
+(65, 28, 10),
+(66, 29, 10),
+(67, 30, 10),
+(68, 31, 10),
+(69, 32, 10),
+(70, 1, 1),
+(71, 13, 1),
+(72, 17, 1),
+(73, 18, 1),
+(74, 19, 1),
+(75, 20, 1),
+(76, 21, 1),
+(77, 22, 1),
+(78, 23, 1),
+(79, 24, 1),
+(80, 25, 1),
+(81, 26, 1),
+(82, 27, 1),
+(83, 28, 1),
+(84, 29, 1),
+(85, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -45,7 +147,8 @@ CREATE TABLE `cuti` (
 
 INSERT INTO `cuti` (`id`, `tgl_pengajuan`, `dari`, `sampai`, `jumlah`, `keterangan`, `status`, `karyawan_id`, `atasan_id`) VALUES
 (1, '2021-01-16', '2021-01-16', '2021-01-16', 1, 'Test Cuti', NULL, 6, 0),
-(2, '2021-01-16', '2021-01-16', '2021-01-16', 1, 'test cuti dummy', 0, 4, 5);
+(2, '2021-01-16', '2021-01-16', '2021-01-16', 1, 'test cuti dummy', 0, 4, 5),
+(4, '2021-01-17', '2021-01-17', '2021-01-17', 1, 'test email', NULL, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -155,7 +258,62 @@ CREATE TABLE `lembur` (
 --
 
 INSERT INTO `lembur` (`id`, `karyawan_id`, `atasan_id`, `tgl_lembur`, `tgl_pengajuan`, `keterangan`, `status`) VALUES
-(1, 4, 5, '2021-01-16', '2021-01-16', 'test lembur', 1);
+(1, 4, 5, '2021-01-16', '2021-01-16', 'test lembur', 1),
+(2, 4, 5, '2021-01-17', '2021-01-17', 'test lembur email', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `menu`
+--
+
+INSERT INTO `menu` (`id`, `nama`, `url`) VALUES
+(1, 'Dashboard', 'dashboard'),
+(2, 'Lihat Department', 'department'),
+(3, 'Tambah Department', 'department/create'),
+(4, 'Edit Department', 'department/edit'),
+(5, 'Hapus Department', 'department/delete'),
+(6, 'Lihat Jabatan', 'jabatan'),
+(7, 'Edit Jabatan', 'jabatan/edit'),
+(8, 'Hapus Jabatan', 'jabatan/delete'),
+(9, 'Tambah Jabatan', 'jabatan/create'),
+(10, 'Lihat Karyawan', 'karyawan'),
+(11, 'Edit Karyawan', 'karyawan/edit'),
+(12, 'Hapus Karyawan', 'karyawan/delete'),
+(13, 'Lihat SOP', 'sop'),
+(14, 'Tambah SOP', 'sop/create'),
+(15, 'Edit SOP', 'sop/edit'),
+(16, 'Hapus SOP', 'sop/delete'),
+(17, 'Show SOP', 'sop/show'),
+(18, 'Lihat Cuti', 'cuti'),
+(19, 'Tambah Cuti', 'cuti/create'),
+(20, 'History Cuti (Manager)', 'cuti/history'),
+(21, 'Pending Cuti (Manager)', 'cuti/pengajuan'),
+(22, 'Konfirmasi Cuti (Manager)', 'cuti/acc'),
+(23, 'Lihat Lembur', 'lembur'),
+(24, 'Tambah Lembur', 'lembur/create'),
+(25, 'History Lembur (Manager)', 'lembur/history'),
+(26, 'Pending Lembur (Manager)', 'lembur/pengajuan'),
+(27, 'Konfirmasi Lembur (Manager)', 'lembur/acc'),
+(28, 'Lihat Pengajuan Karyawan', 'pengajuan'),
+(29, 'Tambah Pengajuan Karyawan', 'pengajuan/create'),
+(30, 'History Lembur (Manager)', 'pengajuan/history'),
+(31, 'Pending Pengajuan Karyawan (HRD)', 'pengajuan/pengajuan'),
+(32, 'Konfirmasi Pengajuan Karyawan (HRD)', 'pengajuan/acc'),
+(33, 'Lihat Manajemen Menu', 'menu'),
+(34, 'Tambah Manajemen Menu', 'menu/create'),
+(35, 'Edit Manajemen Menu', 'menu/edit'),
+(36, 'Hapus Manajemen Menu', 'menu/delete');
 
 -- --------------------------------------------------------
 
@@ -178,11 +336,38 @@ CREATE TABLE `pengajuan` (
 --
 
 INSERT INTO `pengajuan` (`id`, `posisi`, `tgl_pengajuan`, `keterangan`, `department_id`, `karyawan_id`, `status`) VALUES
-(1, 'Programmer', '2021-01-16', '<ul><li>Menguasi CI</li><li>Menguasi Laravel</li><li>Menguasai dummy</li></ul>', 1, 5, 0);
+(1, 'Programmer', '2021-01-16', '<ul><li>Menguasi CI</li><li>Menguasi Laravel</li><li>Menguasai dummy</li></ul>', 1, 5, 0),
+(2, 'test', '2021-01-17', '<p>test email</p>', 1, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sop`
+--
+
+CREATE TABLE `sop` (
+  `id` int(11) NOT NULL,
+  `judul` varchar(150) NOT NULL,
+  `file` text NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `sop`
+--
+
+INSERT INTO `sop` (`id`, `judul`, `file`, `keterangan`) VALUES
+(2, 'upload', 'assets/file/Group_3rri.pdf', 'upload');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `akses`
+--
+ALTER TABLE `akses`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `cuti`
@@ -225,9 +410,21 @@ ALTER TABLE `lembur`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `pengajuan`
 --
 ALTER TABLE `pengajuan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `sop`
+--
+ALTER TABLE `sop`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -235,10 +432,16 @@ ALTER TABLE `pengajuan`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `akses`
+--
+ALTER TABLE `akses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
 -- AUTO_INCREMENT untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `department`
@@ -268,13 +471,25 @@ ALTER TABLE `karyawan_detail`
 -- AUTO_INCREMENT untuk tabel `lembur`
 --
 ALTER TABLE `lembur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `sop`
+--
+ALTER TABLE `sop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

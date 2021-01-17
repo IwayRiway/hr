@@ -20,7 +20,7 @@
             <a href="<?=base_url('lembur/history')?>">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-primary">
-                        <i class="far fa-user"></i>
+                        <i class="far fa-calendar-alt"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
@@ -38,7 +38,7 @@
             <a href="<?=base_url('lembur/pengajuan')?>">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-warning">
-                        <i class="far fa-user"></i>
+                        <i class="far fa-calendar-minus"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
@@ -55,7 +55,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-success">
-                        <i class="far fa-user"></i>
+                        <i class="far fa-calendar-check"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
@@ -71,7 +71,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-danger">
-                        <i class="far fa-user"></i>
+                        <i class="far fa-calendar-times"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">

@@ -121,4 +121,71 @@ class Cuti_model extends CI_model
 
         $this->db->update('cuti', $data, ['id'=>$id]);
     }
+
+    public function getDataPengajuanTotalBySession()
+    {
+        $department_id = $this->session->userdata('department_id');
+        $id = $this->session->userdata('id');
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama 
+                                FROM 
+                                    cuti a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                WHERE 
+                                    b.department_id = '$department_id' 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanBySession()
+    {
+        $department_id = $this->session->userdata('department_id');
+        $id = $this->session->userdata('id');
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama 
+                                FROM 
+                                    cuti a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                WHERE 
+                                    a.status IS NULL 
+                                    AND b.department_id = '$department_id' 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanAccBySession()
+    {
+        $department_id = $this->session->userdata('department_id');
+        $id = $this->session->userdata('id');
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama 
+                                FROM 
+                                    cuti a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                WHERE 
+                                    a.status = 1 
+                                    AND b.department_id = '$department_id' 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanDcBySession()
+    {
+        $department_id = $this->session->userdata('department_id');
+        $id = $this->session->userdata('id');
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama 
+                                FROM 
+                                    cuti a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                WHERE 
+                                    a.status = 0 
+                                    AND b.department_id = '$department_id' 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
 }

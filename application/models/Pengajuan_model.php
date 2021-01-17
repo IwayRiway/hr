@@ -120,4 +120,75 @@ class Pengajuan_model extends CI_model
 
         $this->db->update('pengajuan', $data, ['id'=>$id]);
     }
+
+    public function getDataPengajuanTotalManager()
+    {
+        $id = $this->session->userdata('id');
+
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama,
+                                    c.nama as department 
+                                FROM 
+                                    pengajuan a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                    JOIN department c ON a.department_id = c.id
+                                WHERE 
+                                    a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanManager()
+    {
+        $id = $this->session->userdata('id');
+        
+        return $this->db->query("SELECT 
+                                    a.*,
+                                    b.nama, 
+                                    c.nama as department 
+                                FROM 
+                                    pengajuan a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                    JOIN department c ON a.department_id = c.id
+                                WHERE 
+                                    a.status IS NULL 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanAccManager()
+    {
+        $id = $this->session->userdata('id');
+
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama,
+                                    c.nama as department 
+                                FROM 
+                                    pengajuan a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                    JOIN department c ON a.department_id = c.id
+                                WHERE 
+                                    a.status = 1
+                                    AND a.karyawan_id = '$id' 
+                                ")->num_rows();
+    }
+
+    public function getDataPengajuanDcManager()
+    {
+        $id = $this->session->userdata('id');
+
+        return $this->db->query("SELECT 
+                                    a.*, 
+                                    b.nama,
+                                    c.nama as department 
+                                FROM 
+                                    pengajuan a 
+                                    JOIN karyawan b ON a.karyawan_id = b.id 
+                                    JOIN department c ON a.department_id = c.id
+                                WHERE 
+                                    a.status = 0 
+                                    AND a.karyawan_id = '$id'
+                                ")->num_rows();
+    }
 }
