@@ -1,68 +1,75 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Sop extends CI_Controller {
 
      public function __construct()
     {
         parent::__construct();
-        is_login();
-        $this->load->model('User_model');
+      //   is_login();
+        $this->load->model('Sop_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data['judul'] = 'Data User';
-        $data['user'] = $this->User_model->getUser();
+        $data['judul'] = "Data SOP";
+        $data['sop'] = $this->Sop_model->getData();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('user/index', $data);
+        $this->load->view('sop/index', $data);
         $this->load->view('templates/footer');
     }
 
     public function create()
     {
-        $data['judul'] = 'Tambah User';
-
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('user/create', $data);
+        $this->load->view('sop/create');
         $this->load->view('templates/footer');
     }
 
     public function save()
     {   
-        $this->User_model->save();
+        $data = $this->Sop_model->save();
         $this->session->set_flashdata('sukses', 'Data Berhasil Simpan');
-        redirect('user');
+        redirect('sop');
     }
 
     public function edit($id)
-    {   
-        $data['judul'] = 'Ubah User';
-        $data['user'] = $this->User_model->getUserById($id);
+    { 
+       $data['sop'] = $this->Sop_model->getDataById($id);
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('user/edit', $data);
+        $this->load->view('sop/edit', $data);
         $this->load->view('templates/footer');
     }
 
     
     public function update()
     {   
-        $data = $this->User_model->update($this->input->post('id'));
+        $this->Sop_model->update();
         $this->session->set_flashdata('info', 'Data Berhasil Diubah');
-        redirect('user');
+        redirect('sop');
     }
     
     public function delete($id)
     {   
-        $this->User_model->delete($id);
+        $this->Sop_model->delete($id);
         $this->session->set_flashdata('warning', 'Data Berhasil Dihapus');
-        redirect('user');
+        redirect('sop');
+    }
+
+    public function show($id)
+    {
+        $data['sop'] = $this->Sop_model->getDataById($id);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('sop/show', $data);
+        $this->load->view('templates/footer');
     }
 
 }

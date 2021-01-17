@@ -3,9 +3,6 @@
 <section class="section">
    <div class="section-header">
      <h1><?=$judul?></h1>
-     <div class="section-header-button">
-         <a href="<?=base_url('user/create')?>" class="btn btn-primary">Add New</a>
-      </div>
    </div>
 
    <div class="section-body">
@@ -20,23 +17,19 @@
                          <thead>
                              <tr>
                                  <th>No</th>
-                                 <th>Nama</th>
-                                 <th>Username</th>
-                                 <th>Email</th>
+                                 <th>Role</th>
+                                 <th>Menu Akses</th>
                                  <th>Aksi</th>
                              </tr>
                          </thead>
                          <tbody>
-                             <?php $i=1; foreach($user as $db):?>
+                            <?php $i=1; foreach($akses as $db):?>
                                  <tr>
                                      <td><?=$i++?></td>
+                                     <td><?=$db['role']?></td>
                                      <td><?=$db['nama']?></td>
-                                     <td><?=$db['username']?></td>
-                                     <td><?=$db['email']?></td>
-                                     
                                      <td>
-                                         <a href="<?=base_url('user/edit')?>/<?=$db['id']?>" class="btn btn-icon btn-sm btn-success mr-1" title="Edit" style="min-width:30px"><i class="fas fa-edit"></i></a>
-                                         <a href="<?=base_url('user/delete')?>/<?=$db['id']?>" class="btn btn-icon btn-sm btn-danger mr-1 tombol-hapus" title="Delete" style="min-width:30px"><i class="fas fa-trash"></i></a>
+                                         <a href="<?=base_url('menu/delete')?>/<?=$db['id_akses']?>" class="btn btn-icon btn-sm btn-danger mr-1 tombol-hapus" title="Delete" style="min-width:30px"><i class="fas fa-trash"></i></a>
                                      </td>
                                  </tr>
                               <?php endforeach?>
@@ -45,11 +38,13 @@
                      </div>
 
                 </div>
+                <div class="card-footer text-right">
+                  <a href="<?=base_url('menu')?>" class="btn btn-secondary">Back</a>
+                </div>
             </div>
         </div>
     </div>
 
-   </div>
  </section>
 </div>
 
