@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2021 pada 22.53
+-- Waktu pembuatan: 07 Mar 2021 pada 05.04
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -173,6 +173,28 @@ INSERT INTO `department` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `gaji`
+--
+
+CREATE TABLE `gaji` (
+  `id` int(11) NOT NULL,
+  `karyawan_id` int(11) NOT NULL,
+  `gaji_pokok` varchar(25) NOT NULL,
+  `tunjangan_jabatan` varchar(25) NOT NULL,
+  `tunjangan_transport` varchar(25) NOT NULL,
+  `tunjangan_lain` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `gaji`
+--
+
+INSERT INTO `gaji` (`id`, `karyawan_id`, `gaji_pokok`, `tunjangan_jabatan`, `tunjangan_transport`, `tunjangan_lain`) VALUES
+(1, 4, '1000000', '0', '0', '0');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jabatan`
 --
 
@@ -212,7 +234,7 @@ CREATE TABLE `karyawan` (
 
 INSERT INTO `karyawan` (`id`, `nama`, `tgl_lahir`, `department_id`, `jabatan_id`, `email`, `username`, `password`) VALUES
 (4, 'Staff IT', '2021-01-16', 1, 4, 'staff@staff.com', 'staff', '$2y$10$lTIPhScjPNgHySkB6SLchuTOPteiMBqF.La8osOf6i7q7VohIhKaC'),
-(5, 'Manager IT', '2021-01-16', 1, 3, 'manager@manager.com', 'manager', '$2y$10$Q6495AmpNheE/3xqTG98vOJMeX8cD0xcvc0WiKoGBOqDQB4oGOT8W'),
+(5, 'Manager IT', '2021-01-16', 1, 3, 'riway.restu@gmail.com', 'manager', '$2y$10$Q6495AmpNheE/3xqTG98vOJMeX8cD0xcvc0WiKoGBOqDQB4oGOT8W'),
 (6, 'Root', '2021-01-16', 9, 3, 'root@root.com', 'root', '$2y$10$XnKihIGyZmsHsqxAp8icjOOaddYG5RYeXDlCfMXmT3UazlM/0K.Oy'),
 (7, 'HRD', '2021-01-16', 10, NULL, 'hrd@hrd.com', 'hrd', '$2y$10$UUEkIkInLsqi9BQ6tYj5luAHkKOgIz6E31q.UvRq.J7Q5/h/7I3x6');
 
@@ -342,6 +364,50 @@ INSERT INTO `pengajuan` (`id`, `posisi`, `tgl_pengajuan`, `keterangan`, `departm
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `penggajian`
+--
+
+CREATE TABLE `penggajian` (
+  `id` int(11) NOT NULL,
+  `karyawan_id` int(11) NOT NULL,
+  `gaji` varchar(25) NOT NULL,
+  `potongan` varchar(25) NOT NULL,
+  `periode` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penggajian`
+--
+
+INSERT INTO `penggajian` (`id`, `karyawan_id`, `gaji`, `potongan`, `periode`) VALUES
+(1, 4, '1000000', '500000', '03'),
+(2, 5, '0', '', '03');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `potongan`
+--
+
+CREATE TABLE `potongan` (
+  `id` int(11) NOT NULL,
+  `karyawan_id` int(11) NOT NULL,
+  `potongan_pinjaman` varchar(25) NOT NULL,
+  `potongan_absen` varchar(25) NOT NULL,
+  `potongan_lain` varchar(25) NOT NULL,
+  `periode` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `potongan`
+--
+
+INSERT INTO `potongan` (`id`, `karyawan_id`, `potongan_pinjaman`, `potongan_absen`, `potongan_lain`, `periode`) VALUES
+(4, 4, '100000', '100000', '300000', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `sop`
 --
 
@@ -383,6 +449,12 @@ ALTER TABLE `department`
   ADD UNIQUE KEY `nama` (`nama`);
 
 --
+-- Indeks untuk tabel `gaji`
+--
+ALTER TABLE `gaji`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
@@ -422,6 +494,18 @@ ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `penggajian`
+--
+ALTER TABLE `penggajian`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `potongan`
+--
+ALTER TABLE `potongan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `sop`
 --
 ALTER TABLE `sop`
@@ -448,6 +532,12 @@ ALTER TABLE `cuti`
 --
 ALTER TABLE `department`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `gaji`
+--
+ALTER TABLE `gaji`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `jabatan`
@@ -484,6 +574,18 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `pengajuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `penggajian`
+--
+ALTER TABLE `penggajian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `potongan`
+--
+ALTER TABLE `potongan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `sop`

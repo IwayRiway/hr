@@ -18,6 +18,18 @@
 
        <li class="<?=$side=='karyawan'?'active':''?>"><a class="nav-link" href="<?=base_url('karyawan')?>"><i class="fas fa-user-tie"></i><span>Data Karyawan</span></a></li> 
 
+       <li class="<?=$side=='payroll'?'active':''?>"><a class="nav-link" href="<?=base_url('payroll')?>"><i class="fas fa-calculator"></i><span>Data Payroll</span></a></li> 
+
+       <!-- <li class=><a class="nav-link" href="<?=base_url('payroll')?>">Payroll</a></li> -->
+<!--        
+       <li class="dropdown ">
+          <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Penggajian</span></a>
+          <ul class="dropdown-menu">
+            
+            <li class=><a class="nav-link" href="index.html">Slip Gaji</a></li>
+          </ul>
+        </li> -->
+
        <li class="<?=$side=='sop'?'active':''?>"><a class="nav-link" href="<?=base_url('sop')?>"><i class="fas fa-book"></i><span>Data SOP</span></a></li> 
 
        <li class="<?=$side=='cuti'?'active':''?>"><a class="nav-link" href="<?=base_url('cuti')?>"><i class="fas fa-sign-out-alt"></i><span>Data Cuti</span></a></li> 

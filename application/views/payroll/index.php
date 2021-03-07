@@ -21,28 +21,28 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>NIK</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Department</th>
-                                <th>Jabatan</th>
+                                <th>Divisi</th>
+                                <th>Total Gaji</th>
+                                <th>Total Potongan</th>
+                                <th>Take Home Pay</th>
+                                <th>Periode</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach($karyawan as $db):?>
+                            <?php $i=1; foreach($payroll as $db): $gaji = $db['gaji_pokok'] + $db['tunjangan_jabatan'] + $db['tunjangan_transport'] + $db['tunjangan_lain']?>
                                 <tr>
                                     <td><?=$i++?></td>
                                     <td><?=$db['nama']?></td>
-                                    <td><?=$db['nik']?></td>
-                                    <td><?=$db['tgl_lahir']?></td>
-                                    <td><?=$db['department']?></td>
-                                    <td><?=$db['jabatan']?></td>
+                                    <td><?=$db['divisi']?></td>
+                                    <td><?=$gaji??0?></td>
+                                    <td><?=$db['potongan']??0?></td>
+                                    <td><?=$gaji - $db['potongan']?></td>
+                                    <td><?=date('F')?></td>
                                     <td>
-                                    <?php if($db['id_pk']!=6):?>
-                                        <a href="<?=base_url('karyawan/edit/')?><?=$db['id_pk']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                                        <a href="<?=base_url('karyawan/gaji/')?><?=$db['id_pk']?>" class="btn btn-icon btn-sm btn-info mr-2" title="Gaji"><i class="fas fa-calculator"></i></a>
-                                        <a href="<?=base_url('karyawan/delete/')?><?=$db['id_pk']?>" class="btn btn-icon btn-sm btn-danger mr-2 tombol-hapus" title="Delete"><i class="fas fa-trash"></i></a>
-                                    <?php endif?>
+                                        <a href="<?=base_url('payroll/edit/')?><?=$db['pk']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit Potongan"><i class="fas fa-edit"></i></a>
+
+                                        <a target="_blank" href="<?=base_url('payroll/print/')?><?=$db['pk']?>" class="btn btn-icon btn-sm btn-info mr-2" title="Slip"><i class="fas fa-file"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach?>

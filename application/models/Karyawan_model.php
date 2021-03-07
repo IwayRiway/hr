@@ -28,7 +28,7 @@ class Karyawan_model extends CI_model
                                 FROM 
                                     karyawan a 
                                     LEFT JOIN department b ON a.department_id = b.id 
-                                    LEFT JOIN jabatan c ON a.jabatan_id = b.id 
+                                    LEFT JOIN jabatan c ON a.jabatan_id = c.id 
                                     LEFT JOIN karyawan_detail d ON d.karyawan_id = a.id
                                 WHERE
                                     a.id = '$id'
@@ -63,5 +63,19 @@ class Karyawan_model extends CI_model
     {
         $this->db->delete('karyawan',['id'=>$id]);
         $this->db->delete('karyawan_detail',['karyawan_id'=>$id]);
+    }
+
+    public function saveGaji()
+    {
+        $data = [
+            'karyawan_id'=>$this->input->post('id'),
+            'gaji_pokok' => $this->input->post('gaji_pokok'),
+            'tunjangan_jabatan' => $this->input->post('tunjangan_jabatan'),
+            'tunjangan_transport' => $this->input->post('tunjangan_transport'),
+            'tunjangan_lain' => $this->input->post('tunjangan_lain'),
+        ];
+
+        $this->db->insert('gaji', $data);
+
     }
 }

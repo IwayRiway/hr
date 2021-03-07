@@ -75,5 +75,10 @@ class Auth extends CI_Controller {
             $this->session->set_flashdata('sukses', 'Data Berhasil Simpan');
             redirect('auth');
         }
+
+        public function send_mail()
+{
+    $this->load->view('templates/thank');
+}
     }
 

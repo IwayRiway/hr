@@ -40,7 +40,7 @@
           <div class="inner">
             <div class="row ">
           <div class="col-sm-12 d-flex justify-content-center">
-             <img src="<?=base_url('assets/img/tq.png')?>" alt="" width="20%">
+             <img src="<?=base_url('assets/img/tq.png')?>" alt="" width="250">
           </div>
           <div class="col-sm-12  d-flex justify-content-center">
             <h4 class="mt-3">Terima Kasih</h4>
