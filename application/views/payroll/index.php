@@ -37,7 +37,7 @@
                                     <td><?=$db['divisi']?></td>
                                     <td><?=$gaji??0?></td>
                                     <td><?=$db['potongan']??0?></td>
-                                    <td><?=$gaji - $db['potongan']?></td>
+                                    <td><?=$gaji - ($db['potongan']??0)?></td>
                                     <td><?=date('F')?></td>
                                     <td>
                                         <a href="<?=base_url('payroll/edit/')?><?=$db['pk']?>" class="btn btn-icon btn-sm btn-success mr-2" title="Edit Potongan"><i class="fas fa-edit"></i></a>

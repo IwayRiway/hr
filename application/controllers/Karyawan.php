@@ -63,6 +63,7 @@ class Karyawan extends CI_Controller {
         $data['karyawan'] = $this->Karyawan_model->getDataById($id);
         $data['department'] = $this->Department_model->getDepartment();
         $data['jabatan'] = $this->Jabatan_model->getData();
+        $data['gaji'] = $this->Karyawan_model->getGaji($id);
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');

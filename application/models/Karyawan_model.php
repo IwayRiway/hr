@@ -65,15 +65,32 @@ class Karyawan_model extends CI_model
         $this->db->delete('karyawan_detail',['karyawan_id'=>$id]);
     }
 
+    public function getGaji($id)
+    {
+        return $this->db->get_where('gaji', ['karyawan_id' => $id])->row_array();
+    }
+
     public function saveGaji()
     {
+        $id = $this->input->post('id');
+
+        $cek = $this->db->get_where('gaji', ['karyawan_id'=>$id])->row_array();
+
         $data = [
-            'karyawan_id'=>$this->input->post('id'),
             'gaji_pokok' => $this->input->post('gaji_pokok'),
             'tunjangan_jabatan' => $this->input->post('tunjangan_jabatan'),
             'tunjangan_transport' => $this->input->post('tunjangan_transport'),
             'tunjangan_lain' => $this->input->post('tunjangan_lain'),
         ];
+
+        if($cek){
+            $this->db->update('gaji', $data, ['karyawan_id'=>$id]);
+        } else {
+            $data['karyawan_id'] = $id;
+            $this->db->insert('gaji', $data);
+        }
+
+        
 
         $this->db->insert('gaji', $data);
 

@@ -65,19 +65,19 @@
                               <div class="col-sm-4">
                                 <div class="form-group">
                                         <label for="gaji_pokok">Gaji Pokok</label>
-                                        <input id="gaji_pokok" type="number" class="form-control" name="gaji_pokok" tabindex="1" required>
+                                        <input id="gaji_pokok" type="number" class="form-control" name="gaji_pokok" tabindex="1" required value=<?=$gaji['gaji_pokok']??0?>>
                                   </div>
                                   <div class="form-group">
                                         <label for="tunjangan_jabatan">Tunjangan Jabatan</label>
-                                        <input id="tunjangan_jabatan" type="number" class="form-control" name="tunjangan_jabatan" tabindex="1" required>
+                                        <input id="tunjangan_jabatan" type="number" class="form-control" name="tunjangan_jabatan" tabindex="1" required value=<?=$gaji['tunjangan_jabatan']??0?>>
                                   </div>
                                   <div class="form-group">
                                         <label for="tunjangan_transport">Tunjangan Transport</label>
-                                        <input id="tunjangan_transport" type="number" class="form-control" name="tunjangan_transport" tabindex="1" required>
+                                        <input id="tunjangan_transport" type="number" class="form-control" name="tunjangan_transport" tabindex="1" required value=<?=$gaji['tunjangan_transport']??0?>>
                                   </div>
                                   <div class="form-group">
                                         <label for="tunjangan_lain">Tunjangan Lain</label>
-                                        <input id="tunjangan_lain" type="number" class="form-control" name="tunjangan_lain" tabindex="1" required>
+                                        <input id="tunjangan_lain" type="number" class="form-control" name="tunjangan_lain" tabindex="1" required value=<?=$gaji['tunjangan_lain']??0?>>
                                   </div>
                               </div>
 
